@@ -1,4 +1,6 @@
-﻿namespace CalcTree
+﻿using System;
+
+namespace CalcTree
 {
     internal class CType
     {
@@ -10,7 +12,11 @@
         }
         public static implicit operator CType(string name)
         {
-            return GlobalTypes.VarTypes.Find(type => type.Name == name);
+            CType result = GlobalTypes.VarTypes.Find(type => type.Name == name);
+            if (result != null)
+                return result;
+            else
+                throw new Exception($"Undefined type <{name}>");
         }
         public CType(string name)
         {

@@ -15,7 +15,7 @@ namespace CalcTree
         static void Main(string[] args)
         {
             AutoNamer namer = new AutoNamer('x');
-            Node root = new OperatorNode(namer.Next(), (CType)"Integer", (Operator)"SumInt");
+            Node root = new OperatorNode(namer.Next(), (CType)"Integer", (COperator)"SumInt");
             Node child1 = new VarNode(namer.Next(), (CType)"Integer");
             root.children.Add(child1);
             child1.parents.Add(root);

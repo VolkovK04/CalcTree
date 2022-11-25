@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CalcTree
 {
@@ -15,11 +11,11 @@ namespace CalcTree
             VarTypes.Add(new CType("Matrix"));
             VarTypes.Add(new CType("Vector"));
 
-            Operators.Add(new Operator("SumInt", "+", "Integer", "Integer", "Integer"));
+            Operators.Add(new COperator("SumInt", "+", "Integer", "Integer", "Integer"));
         }
 
         public static List<CType> VarTypes = new List<CType>();
 
-        public static List<Operator> Operators = new List<Operator>();
+        public static List<COperator> Operators = new List<COperator>();
     }
 }

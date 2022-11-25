@@ -50,17 +50,17 @@ namespace CalcTree
     }
     internal class OperatorNode : Node
     {
-        public OperatorNode(string name, CType varType, Operator @operator) : base(name)
+        public OperatorNode(string name, CType varType, COperator @operator) : base(name)
         {
             VarType = varType;
             Operator = @operator;
         }
-        public OperatorNode(CType varType, Operator @operator) : base()
+        public OperatorNode(CType varType, COperator @operator) : base()
         {
             VarType = varType;
             Operator = @operator;
         }
         public CType VarType;
-        public Operator Operator;
+        public COperator Operator;
     }
 }

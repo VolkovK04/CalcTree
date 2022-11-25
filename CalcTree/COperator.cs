@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CalcTree
 {
-    internal class Operator
+    internal class COperator
     {
-        public Operator(string name, string symbol, string outputType, params string[] inputTypes)
+        public COperator(string name, string symbol, string outputType, params string[] inputTypes)
         {
             Name = name;
             Symbol = symbol;
@@ -16,11 +16,15 @@ namespace CalcTree
             InputTypes = new List<string>(inputTypes);
         }
 
-        public static implicit operator Operator(string name)
+        public static implicit operator COperator(string name)
         {
-            return GlobalTypes.Operators.Find(type => type.Name == name);
+            COperator result = GlobalTypes.Operators.Find(op => op.Name == name);
+            if (result != null)
+                return result;
+            else
+                throw new Exception($"Undefined operator <{name}>");
         }
-        public Operator(string name)
+        public COperator(string name)
         {
             Name = name;
         }
@@ -29,7 +33,7 @@ namespace CalcTree
         public List<string> InputTypes;
         public string OutputType;
     }
-    //internal class BinaryOperator : Operator
+    //internal class BinaryOperator : COperator
     //{
     //    public BinaryOperator(string name, string leftType, string )
     //    public string LeftType => InputTypes[0];
