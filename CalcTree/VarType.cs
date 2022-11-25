@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace CalcTree
 {
-    enum Type
+    enum VarType
     {
-        Var,
-        Const,
-        Operator
+        Integer,
+        Double,
+        Matrix,
+        Vector,
+        Bool
     }
 }

@@ -11,21 +11,19 @@ namespace CalcTree
 {
     internal class Program
     {
+        static string filename = "C:\\Users\\volkov\\source\\repos\\CalcTree\\CalcTree\\bin\\Debug\\test.c";
         static void Main(string[] args)
         {
-            Node root = new OperatorNode(Operator.Sum);
-            Node child1 = new VarNode<int>("x");
+            AutoNamer namer = new AutoNamer();
+            Node root = new OperatorNode(namer.Next(), VarType.Integer, Operator.Sum);
+            Node child1 = new VarNode(namer.Next(), VarType.Integer);
             root.children.Add(child1);
             child1.parents.Add(root);
-            Node child2 = new VarNode<int>("y");
+            Node child2 = new VarNode(namer.Next(), VarType.Integer);
             root.children.Add(child2);
             child2.parents.Add(root);
 
-            Console.WriteLine(root.GetType());
-            string filename = "C:\\Users\\volkov\\source\\repos\\CalcTree\\CalcTree\\bin\\Debug\\test.c";
             CCompiler.ToCCode(root, filename);
-            
-            Console.ReadLine();
         }
     }
 }
