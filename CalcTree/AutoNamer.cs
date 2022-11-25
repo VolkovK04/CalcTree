@@ -8,11 +8,16 @@ namespace CalcTree
 {
     internal class AutoNamer
     {
+        public AutoNamer(char letter)
+        {
+            this.letter = letter;
+        }
         int index = 0;
+        char letter;
         public string Next()
         {
             index++;
-            return $"x{index:000}";
+            return $"{letter}{index:000}";
         }
     }
 }

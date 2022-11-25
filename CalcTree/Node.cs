@@ -2,15 +2,11 @@
 
 namespace CalcTree
 {
-    enum Operator
-    {
-        Sum,
-        Mult
-    }
+
 
     internal class Node
     {
-        static AutoNamer newName = new AutoNamer();
+        static AutoNamer varNamer = new AutoNamer('x');
 
         public Node(string name)
         {
@@ -18,7 +14,7 @@ namespace CalcTree
         }
         public Node()
         {
-            NodeName = newName.Next();
+            NodeName = varNamer.Next();
         }
         public List<Node> children = new List<Node>();
         public List<Node> parents = new List<Node>();
@@ -26,45 +22,45 @@ namespace CalcTree
     }
     internal class ConstNode : Node
     {
-        public ConstNode(string name, VarType varType, string value) : base(name)
+        public ConstNode(string name, CType varType, string value) : base(name)
         {
             VarType = varType;
             Value = value;
         }
-        public ConstNode(VarType varType, string value) : base()
+        public ConstNode(CType varType, string value) : base()
         {
             VarType = varType;
             Value = value;
         }
         public string Value;
-        public VarType VarType;
+        public CType VarType;
     }
 
     internal class VarNode : Node
     {
-        public VarNode(string name, VarType varType) : base(name)
+        public VarNode(string name, CType varType) : base(name)
         {
             VarType = varType;
         }
-        public VarNode(VarType varType) : base()
+        public VarNode(CType varType) : base()
         {
             VarType = varType;
         }
-        public VarType VarType;
+        public CType VarType;
     }
     internal class OperatorNode : Node
     {
-        public OperatorNode(string name, VarType varType, Operator @operator) : base(name)
+        public OperatorNode(string name, CType varType, Operator @operator) : base(name)
         {
             VarType = varType;
             Operator = @operator;
         }
-        public OperatorNode(VarType varType, Operator @operator) : base()
+        public OperatorNode(CType varType, Operator @operator) : base()
         {
             VarType = varType;
             Operator = @operator;
         }
-        public VarType VarType;
+        public CType VarType;
         public Operator Operator;
     }
 }
